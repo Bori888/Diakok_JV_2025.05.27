@@ -185,7 +185,8 @@ public class DiakokGUI extends javax.swing.JFrame {
                 String sor = sorok.get(i);
                 Diakok diak = new Diakok(sor);
                 diakok.add(diak);//EGYES SZAMAB KELL A DIAK 
-                cbbID.addItem(String.valueOf(diak.getID()));
+                cbbID.addItem(String.valueOf(diak.getID()+"/"+diak.getTargy()));
+                
                 
             }
             megjelenites(diakok.get(0));
