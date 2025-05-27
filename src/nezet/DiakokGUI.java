@@ -18,6 +18,7 @@ import modell.Diakok;
  * @author IlyésBorbála(SZF_202
  */
 public class DiakokGUI extends javax.swing.JFrame {
+
     private List<Diakok> diakok;
 
     /**
@@ -181,13 +182,18 @@ public class DiakokGUI extends javax.swing.JFrame {
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
         try {
             List<String> sorok = Files.readAllLines(Path.of("diakok.csv"));
+            List<Integer> idLista = new ArrayList<>();
             for (int i = 1; i < sorok.size(); i++) {
                 String sor = sorok.get(i);
                 Diakok diak = new Diakok(sor);
-                diakok.add(diak);//EGYES SZAMAB KELL A DIAK 
-                cbbID.addItem(String.valueOf(diak.getID()));
-                
+                diakok.add(diak);
+
+                if (!idLista.contains(diak.getID())) {
+                    idLista.add(diak.getID());
+                    cbbID.addItem(String.valueOf(diak.getID()));
+                }
             }
+
             megjelenites(diakok.get(0));
         } catch (IOException ex) {
             Logger.getLogger(DiakokGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -195,7 +201,7 @@ public class DiakokGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     private void cbmMegjelenitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmMegjelenitActionPerformed
-        Diakok diak = new Diakok(123,"Matek",4,true);
+        Diakok diak = new Diakok(123, "Matek", 4, true);
         megjelenites(diak);
     }//GEN-LAST:event_cbmMegjelenitActionPerformed
 
@@ -204,8 +210,8 @@ public class DiakokGUI extends javax.swing.JFrame {
         int i = cbbID.getSelectedIndex();
         //hányadik versenyzo
         Diakok diak = diakok.get(i);
-         //irjuk ki
-        
+        //irjuk ki
+
         megjelenites(diak);
     }//GEN-LAST:event_cbbIDActionPerformed
 
@@ -265,8 +271,6 @@ public class DiakokGUI extends javax.swing.JFrame {
         txtTargy.setText(diak.getTargy());
         txtJegy.setText(String.valueOf(diak.getJegy()));
         txtBukas.setText(String.valueOf(diak.isBukas()));
-        
-        
-        
+
     }
 }
