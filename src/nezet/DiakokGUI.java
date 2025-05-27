@@ -4,11 +4,15 @@
  */
 package nezet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author IlyésBorbála(SZF_202
  */
 public class DiakokGUI extends javax.swing.JFrame {
+    private List <Diakok> diakok;
 
     /**
      * Creates new form DiakokGUI
@@ -159,7 +163,7 @@ public class DiakokGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
-        
+        List<String> sorok = new ArrayList<>();
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     /**
