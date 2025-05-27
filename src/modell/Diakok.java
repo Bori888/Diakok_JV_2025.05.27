@@ -8,7 +8,13 @@ public class Diakok {
     private int Jegy;
     private boolean Bukas;
 
-    public Diakok() {
+    public Diakok(String sor ) {
+        String[] adatok = sor.split(";");
+        ID = Integer.parseInt(adatok[1]);
+        Targy =adatok[2];
+        Jegy = Integer.parseInt(adatok[3]);
+        Bukas = Boolean.valueOf(adatok[4]);
+                
         
     }
     

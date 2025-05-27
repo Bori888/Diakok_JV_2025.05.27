@@ -4,8 +4,15 @@
  */
 package nezet;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modell.Diakok;
 
 /**
  *
@@ -19,6 +26,7 @@ public class DiakokGUI extends javax.swing.JFrame {
      */
     public DiakokGUI() {
         initComponents();
+        diakok = new ArrayList<>();
     }
 
     /**
@@ -163,7 +171,15 @@ public class DiakokGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
-        List<String> sorok = new ArrayList<>();
+        try {
+            List<String> sorok = Files.readAllLines(Path.of("diakok"));
+            for (int i = 1; i < sorok.size(); i++) {
+                String sor = sorok.get(i);
+                Diakok diakok = new Diakok(sor);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(DiakokGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     /**
